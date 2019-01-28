@@ -1,0 +1,96 @@
+{
+	"id": "246134ab-add7-7466-8ff0-0b4efb9d5fce",
+	"name": "reservation-api",
+	"description": "",
+	"order": [
+		"e061627b-f01d-ac2d-9345-b2698887439b",
+		"2c2be511-2963-255f-8031-1ea507b27097",
+		"adc9ff74-8b34-3118-20df-2d97b3216cc9"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1548664077996,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2c2be511-2963-255f-8031-1ea507b27097",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/api/v1/reservations",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1548669838862,
+			"name": "localhost:3000/api/v1/reservations",
+			"description": "",
+			"collectionId": "246134ab-add7-7466-8ff0-0b4efb9d5fce",
+			"responses": [],
+			"rawModeData": "{\n\t\n\t\"reservations\":{\n\t\t\"restaurant_id\":16,\n\t\t\"restaurant_shift_id\":1,\n\t\t\"guest_id\":1,\n\t\t\"guest_count\":3,\n\t\t\"reservation_time\":\"07:30\",\n\t\t\"restaurant_table_id\":1\n\t}\n}"
+		},
+		{
+			"id": "adc9ff74-8b34-3118-20df-2d97b3216cc9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/api/v1/reservations/11",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1548673075991,
+			"name": "localhost:3000/api/v1/reservations/11",
+			"description": "",
+			"collectionId": "246134ab-add7-7466-8ff0-0b4efb9d5fce",
+			"responses": [],
+			"rawModeData": "{\n\t\n\t\"reservations\":{\n\t\t\"reservation_time\":\"07:45\",\n\t\t\"guest_count\":5\n\t}\n}"
+		},
+		{
+			"id": "e061627b-f01d-ac2d-9345-b2698887439b",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:3000/api/v1/reservations",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1548673078384,
+			"name": "localhost:3000/api/v1/reservations",
+			"description": "",
+			"collectionId": "246134ab-add7-7466-8ff0-0b4efb9d5fce",
+			"responses": []
+		}
+	]
+}

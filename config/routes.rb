@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       resources :reservations
     end
   end
+  get '/docs', to: 'api_docs#index'
 end

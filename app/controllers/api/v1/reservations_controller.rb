@@ -1,5 +1,9 @@
 class Api::V1::ReservationsController < Api::V1::ApplicationController
-	def index
+  include Swagger::Blocks
+  include Swagger::ReservationApi
+
+
+  def index
 		render_json("List of reservation",true,Reservation.all,200)
 	end
 
