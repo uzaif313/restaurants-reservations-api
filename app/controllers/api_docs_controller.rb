@@ -24,8 +24,8 @@ class ApiDocsController < ActionController::Base
         key :url, 'https://swagger.io'
       end
     end
-    key :host, "localhost:3000/api/v1/"
-    key :basePath, '/api'
+    key :host, "localhost:3000/"
+    key :basePath, 'api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
   end

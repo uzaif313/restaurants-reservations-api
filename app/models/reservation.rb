@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  include Swagger::ReservationSchema
+  
   belongs_to :restaurant_table
   belongs_to :restaurant_shift
   belongs_to :guest

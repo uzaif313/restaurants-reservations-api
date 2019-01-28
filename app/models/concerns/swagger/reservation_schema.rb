@@ -1,3 +1,0 @@
-class Swagger::ReservationSchema
-
-end

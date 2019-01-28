@@ -3,8 +3,15 @@ module Swagger::ReservationApi
   include Swagger::Blocks
 
   included do
-    swagger_path '/restaurants/{id}' do
-      parameter :id
+    swagger_path '/restaurants/{id}/reservations' do
+      parameter do
+        key :name, :id
+        key :in, :path
+        key :description, 'ID of restaurant to fetch'
+        key :required, true
+        key :type, :integer
+        key :format, :int64
+      end
 
       operation :get do
         key :description, 'Finds the specified restaurant reservations'
