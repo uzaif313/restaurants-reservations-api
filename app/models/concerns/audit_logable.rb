@@ -7,7 +7,7 @@ module AuditLogable
   end
 
   def prev
-    self.audits[-2]
+    self.audits.last(2)&.first
   end
 
   private

@@ -17,7 +17,7 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 	def update
     reservation = Reservation.find(params[:id])
 		if reservation.update(reservation_params)
-			# send_email(reservation.id)
+			send_email_on_update(reservation.id)
 			render_json("Successfully reservation updated",true,reservation,200)
 		else
 			render_json("Something Goes Wrong",false,reservation.errors,501)
@@ -37,5 +37,10 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 			ReservationMailer.new_reservation_for_guest(reservation_id).deliver_now
 			ReservationMailer.new_reservation_for_restaurant(reservation_id).deliver_now
 		end
+
+    def send_email_on_update(reservation_id)
+      ReservationMailer.update_reservation_for_guest(reservation_id).deliver_now
+      ReservationMailer.update_reservation_for_restaurant(reservation_id).deliver_now
+    end
 
 end

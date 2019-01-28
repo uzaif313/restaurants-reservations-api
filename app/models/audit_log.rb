@@ -4,7 +4,7 @@ class AuditLog < ApplicationRecord
   validates :log, presence: true
 
   def data
-    Struct.new(self.log)
+    OpenStruct.new(self.log)
   end
 
 end

@@ -13,9 +13,26 @@ class ReservationMailer < ApplicationMailer
 			end
 	end
 
-	private 
+  def update_reservation_for_guest(reservation_id)
+			@data = mailer_data(reservation_id)
+			if @data.present?
+        @old_data = @data[:reservation].prev.data
+				mail(to: @data[:guest].email, subject: 'Your Reservation is updated!!')
+			end
+	end
+
+	def update_reservation_for_restaurant(reservation_id)
+		@data = mailer_data(reservation_id)
+			if @data.present?
+        @old_data = @data[:reservation].prev.data
+				mail(to: @data[:restaurant].email, subject: 'Reservation is updated!!')
+			end
+	end
+
+
+	private
 		def mailer_data(reservation_id)
-  	  @data = {}	
+  	  @data = {}
 	  	@data[:reservation] = Reservation.find_by(id:reservation_id)
 			 if @data[:reservation].present?
 			 	@data[:guest] = @data[:reservation].guest
