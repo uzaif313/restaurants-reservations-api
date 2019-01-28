@@ -1,5 +1,4 @@
 class Reservation < ApplicationRecord
-
   belongs_to :restaurant_table
   belongs_to :restaurant_shift
   belongs_to :guest

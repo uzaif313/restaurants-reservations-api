@@ -4,7 +4,8 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 
 
   def index
-		render_json("List of reservation",true,Reservation.all,200)
+  	data = Reservation.joins(:restaurant_shift).where("restaurant_shifts.restaurant_id = ?",params[:restaurant_id])
+		render_json("List of reservation",true,serailie_json(data),200)
 	end
 
 	def create
@@ -15,7 +16,10 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 		else
 			render_json("Something Goes Wrong",false,reservation.errors,501)
 		end
+	end
 
+	def show
+		render_json("Reservation", true, serailie_json(Reservation.first), 200)
 	end
 
 	def update
