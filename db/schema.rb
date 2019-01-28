@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_26_184532) do
+ActiveRecord::Schema.define(version: 2019_01_28_090824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audit_logs", force: :cascade do |t|
+    t.json "log"
+    t.string "audit_logable_type"
+    t.bigint "audit_logable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audit_logable_type", "audit_logable_id"], name: "index_audit_logs_on_audit_logable_type_and_audit_logable_id"
+  end
 
   create_table "guests", force: :cascade do |t|
     t.string "name"

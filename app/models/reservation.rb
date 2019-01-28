@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
+
   belongs_to :restaurant_table
   belongs_to :restaurant_shift
   belongs_to :guest
@@ -7,6 +8,7 @@ class Reservation < ApplicationRecord
   validates_with Validation::ReservationTimeValidation
   delegate :start_time, :end_time,  to: :restaurant_shift
   delegate :max_guests, :min_guests , to: :restaurant_table
+  include AuditLogable
 
   def restaurant
   	restaurant_table.restaurant

@@ -5,7 +5,7 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 
 	def create
 		reservation = Reservation.new(reservation_params)
-		if reservation.save
+		if reservation.save!
 			send_email(reservation.id)
 			render_json("Successfully reservation created",true,reservation,200)
 		else
