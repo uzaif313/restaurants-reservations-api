@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < Api::V1::ApplicationController
 	def index
-		
+		render_json("List of reservation",true,Reservation.all,200)
 	end
 
 	def create
