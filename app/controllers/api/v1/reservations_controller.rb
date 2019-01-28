@@ -15,6 +15,13 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 	end
 
 	def update
+    reservation = Reservation.find(params[:id])
+		if reservation.update(reservation_params)
+			# send_email(reservation.id)
+			render_json("Successfully reservation updated",true,reservation,200)
+		else
+			render_json("Something Goes Wrong",false,reservation.errors,501)
+		end
 	end
 
 	private
