@@ -1,0 +1,34 @@
+class Api::V1::ReservationsController < Api::V1::ApplicationController
+	def index
+		
+	end
+
+	def create
+		reservation = Reservation.new(reservation_params)
+		if reservation.save
+			send_email(reservation.id)
+			render_json("Successfully reservation created",true,reservation,200)
+		else
+			render_json("Something Goes Wrong",false,reservation.errors,501)
+		end
+
+	end
+
+	def update
+	end
+
+	private
+
+		def reservation_params
+			params.require(:reservations).permit(:restaurant_shift_id,
+																					 :restaurant_table_id,
+																					 :reservation_time,
+																					 :guest_id, :guest_count)
+		end
+
+		def send_email(reservation_id)
+			ReservationMailer.new_reservation_for_guest(reservation_id).deliver_now
+			ReservationMailer.new_reservation_for_restaurant(reservation_id).deliver_now
+		end
+
+end

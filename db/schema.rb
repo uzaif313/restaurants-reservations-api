@@ -22,4 +22,61 @@ ActiveRecord::Schema.define(version: 2019_01_26_184532) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "restaurant_table_id"
+    t.bigint "restaurant_shift_id"
+    t.datetime "reservation_time"
+    t.bigint "guest_id"
+    t.integer "guest_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_reservations_on_guest_id"
+    t.index ["restaurant_shift_id"], name: "index_reservations_on_restaurant_shift_id"
+    t.index ["restaurant_table_id"], name: "index_reservations_on_restaurant_table_id"
+  end
+
+  create_table "restaurant_shifts", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.string "shift_name"
+    t.time "start_at"
+    t.time "end_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_shifts_on_restaurant_id"
+  end
+
+  create_table "restaurant_tables", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.string "table_name"
+    t.integer "min_guests"
+    t.integer "max_guests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_tables_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.string "table_name"
+    t.integer "min_guests"
+    t.integer "max_guests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
+  end
+
+  add_foreign_key "reservations", "guests"
+  add_foreign_key "reservations", "restaurant_shifts"
+  add_foreign_key "reservations", "restaurant_tables"
+  add_foreign_key "restaurant_shifts", "restaurants"
+  add_foreign_key "restaurant_tables", "restaurants"
+  add_foreign_key "tables", "restaurants"
 end

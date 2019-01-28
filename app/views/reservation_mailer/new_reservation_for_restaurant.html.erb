@@ -1,0 +1,21 @@
+<h1>Hey!!</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Guest</th>
+			<th>Table </th>
+			<th>Shift </th>
+			<th>Reservation Time </th>
+			<th>Guest Count</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%=@data[:guest].name%></td>
+			<td><%=@data[:restaurant_table].table_name%></td>
+			<td><%=@data[:restaurant_shift].shift_name%></td>
+			<td><%=@data[:reservation].reservation_time%></td>
+			<td><%=@data[:reservation].guest_count%></td>
+		</tr>
+	</tbody>
+</table>
