@@ -3,17 +3,15 @@ module Swagger::ReservationApi
   include Swagger::Blocks
 
   included do
-    swagger_path '/users/{id}' do
-      parameter :user_id do
-        key :name, :id
-      end
+    swagger_path '/restaurants/{id}' do
+      parameter :id
 
       operation :get do
-        key :description, 'Finds the specified user'
-        key :operationId, :find_user_by_id
+        key :description, 'Finds the specified restaurant reservations'
+        key :operationId, :find_restaurant_by_id
 
         response 200 do
-          key :description, 'User specified by its ID'
+          key :description, 'Restaurnt specified by its ID'
           schema do
             key :'$ref', :UserOutput
           end

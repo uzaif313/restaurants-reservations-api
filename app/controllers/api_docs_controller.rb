@@ -24,7 +24,7 @@ class ApiDocsController < ActionController::Base
         key :url, 'https://swagger.io'
       end
     end
-    key :host, 'petstore.swagger.wordnik.com'
+    key :host, "localhost:3000/api/v1/"
     key :basePath, '/api'
     key :consumes, ['application/json']
     key :produces, ['application/json']
