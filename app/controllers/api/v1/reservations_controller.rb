@@ -4,7 +4,9 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 
 
   def index
-  	data = Reservation.joins(:restaurant_shift).where("restaurant_shifts.restaurant_id = ?",params[:restaurant_id])
+  	data = Reservation.joins(:restaurant_shift,:guest,:restaurant_table)
+  										.select("restaurant_tables.table_name as table_name,guests.name as guest_name,reservations.*")
+  										.where("restaurant_shifts.restaurant_id = ?",params[:restaurant_id])
 		render_json("List of reservation",true,serailie_json(data),200)
 	end
 
