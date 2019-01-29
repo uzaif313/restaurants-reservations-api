@@ -26,5 +26,29 @@ module Swagger::ReservationApi
       end
 
     end
+
+    swagger_path '/reservations' do
+      parameter do
+        key :name, :reservations
+        key :in, :body
+        key :description, 'Create Reservation'
+        key :required, true
+        key :type, :integer
+        schema do
+            key :'$ref', :ReservationInput
+        end
+      end
+
+      operation :post do
+      
+        response 200 do
+          key :description, 'Reservation'
+          schema do
+            key :'$ref', :ReservationInput
+          end
+        end
+      end
+
+    end
   end
 end
