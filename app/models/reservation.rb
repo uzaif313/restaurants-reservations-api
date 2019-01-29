@@ -19,8 +19,8 @@ class Reservation < ApplicationRecord
       property :email do
         key :type, :string
       end
-    end
   end
+  
   def restaurant
   	restaurant_table.restaurant
   end

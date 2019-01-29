@@ -20,9 +20,6 @@ class Api::V1::ReservationsController < Api::V1::ApplicationController
 		end
 	end
 
-	def show
-		render_json("Reservation", true, serailie_json(Reservation.first), 200)
-	end
 
 	def update
     reservation = Reservation.find(params[:id])

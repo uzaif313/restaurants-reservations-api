@@ -2,6 +2,7 @@
 <table border="1">
 	<thead>
 		<tr>
+			<th></th>
 			<th>Reservation Time </th>
 			<th>Guest Count</th>
 		</tr>
@@ -9,10 +10,12 @@
 	<tbody>
 		<tr>
       <tr>
+      	<th>Prev</th>
   			<td><%=@old_data.reservation_time%></td>
   			<td><%=@old_data.guest_count%></td>
   		</tr>
       <tr>
+      	<th>Current</th>
   			<td><%=@data[:reservation].reservation_time%></td>
   			<td><%=@data[:reservation].guest_count%></td>
   		</tr>
